@@ -4,15 +4,22 @@ import Formulario from './components/Formulario';
 import ListadoPacientes from './components/ListadoPacientes';
 
 function App() {
+  //el useState tiene un array porque le voy a pasar  un array
+  const [pacientes,setPacientes] = useState([])
 
 
   return (
     <>
       <div className="container mx-auto mt-16">
-        <Header />
+        <Header/>
         <div className='mt-12  mx-auto  md:flex'>
-          <Formulario />
-          <ListadoPacientes />
+          <Formulario 
+                pacientes={pacientes}
+                setPacientes={setPacientes}
+          />
+          <ListadoPacientes
+          pacientes={pacientes}
+          />
         </div>
       </div>
     </>

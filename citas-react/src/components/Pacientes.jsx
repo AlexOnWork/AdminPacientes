@@ -1,27 +1,32 @@
 import React from 'react'
 
-const Pacientes = () => {
+const Pacientes = ({pacientes}) => {
+
+  //le aplicamos destructuring a pacientes
+  const{nombre,propietario,email,alta,sintomas,id}=pacientes
+
+
   return (
    
-    <div className='m-3 bg-white shadow-md rounded-xl px-5 py-10'>
+    <div className='mx-5 my-10 bg-white shadow-md rounded-xl px-5 py-10'>
     <p className='font-bold  mb-3 text-gray-700 uppercase'>Nombre:{' '}
-    <span className='font-normal normal-case ' >Hook</span>
+    <span className='font-normal normal-case ' >{nombre}</span>
     </p>
 
     <p className='font-bold  mb-3 text-gray-700 uppercase'>Propietario:{' '}
-    <span className='font-normal normal-case ' >Juan</span>
+    <span className='font-normal normal-case ' >{propietario}</span>
     </p>
 
     <p className='font-bold  mb-3 text-gray-700 uppercase'>Email:{' '}
-    <span className='font-normal normal-case ' >Correo@correo.com</span>
+    <span className='font-normal normal-case ' >{email}</span>
     </p>
 
     <p className='font-bold  mb-3 text-gray-700 uppercase'>Alta:{' '}
-    <span className='font-normal normal-case ' >10/12/22</span>
+    <span className='font-normal normal-case ' >{alta}</span>
     </p>
 
     <p className='font-bold  mb-3 text-gray-700 uppercase'>Sintomas:{' '}
-    <span className='font-normal normal-case ' >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod excepturi labore harum dolore consequatur eveniet sapiente non libero culpa itaque fuga natus commodi illum, beatae, odit exercitationem ipsum expedita nihil!</span>
+    <span className='font-normal normal-case ' >{sintomas}</span>
     </p>
   </div>
   )
