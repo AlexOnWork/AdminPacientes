@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import ErrorH from './ErrorH';
 import { v4 as uuidv4 } from 'uuid'; // Importa la función uuidv4 para generar un ID único
-const Formulario = ({pacientes,setPacientes}) => {
+const Formulario = ({pacientes,setPacientes,paciente,setPaciente}) => {
 
 
   const [nombre, setNombre] = useState('');
@@ -15,6 +15,21 @@ const Formulario = ({pacientes,setPacientes}) => {
 
   const[error,setError]=useState(false);
 
+//Este codigo se va a ejecutart cuando en el state paciente hay aalgo , si lo hay va a poner los valores del form con lo que hay en paciente
+  useEffect(()=>{
+   if( Object.keys(paciente).length >0){
+   setNombre(paciente.nombre)
+   setPropietario(paciente.propietario)
+   setAlta(paciente.alta)
+   setEmail(paciente.email)
+   setSintomas(paciente.sintomas)
+   }else{
+    console.log("no hay nada ")
+   }
+   
+  },[paciente])
+
+  
   const handleSubmit = (e) => {
     //prevenimos el evento por default de el from 
     e.preventDefault();
@@ -34,11 +49,29 @@ const Formulario = ({pacientes,setPacientes}) => {
     email,
     alta,
     sintomas,
-    id: uuidv4()
+  
   }
-  //lllenamos paciente con una copia de lo que hay en paciente y le agregamos el obejto nuevo 
-  setPacientes([...pacientes,objetoPaciente])
-    console.log("Enviando Formulario")
+//si existe en objeto paciente un id , significa que estamos editando 
+  if(paciente.id){
+  //editando el registro
+  objetoPaciente.id= paciente.id 
+  console.log(objetoPaciente)
+  console.log(paciente)
+
+  //hacemos un map al obejto que esta en el state que es el que se est aactualizando cuando editamos y si el  ID es el mismo devolvemos el objetoPaciente , si no el pacienteState que se queda tal y como esta, esto lo hyacemos para identificar en el state el objeto que vamos a cambiar 
+    const pacientesActualizados = pacientes.map(pacienteState => pacienteState.id === paciente.id ? objetoPaciente:pacienteState)
+    
+    setPacientes(pacientesActualizados)
+    setPaciente({})
+  }else{
+//nuevo registro
+ //lllenamos paciente con una copia de lo que hay en paciente y le agregamos el obejto nuevo 
+ objetoPaciente.id= uuidv4();
+ setPacientes([...pacientes,objetoPaciente])
+ console.log("nuevo registro")
+  }
+
+ 
 
     //reiniciar el form
     setNombre('')
@@ -135,7 +168,7 @@ const Formulario = ({pacientes,setPacientes}) => {
         <input
         
           className='bg-indigo-600 w-full p-3 mb-0 rounded-lg text-white font-bold uppercase hover:bg-indigo-700 cursor-pointer transition-all'
-          value='agregar paciente'
+          value={paciente.id ? 'Editar Paciente':'AGregar PAciente'}
           type="submit" />
 
       </form>
