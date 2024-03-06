@@ -4,6 +4,8 @@ Este es un pequeño proyecto de administración de pacientes para una peluquerí
 Permite agregar nuevos pacientes, ver los pacientes existentes y editar o eliminar pacientes existentes. 
 Los datos de los pacientes se almacenan localmente en el almacenamiento local del navegador.
 
+[Ver la App desplegada](https://65e8de69c55aad583fcab75b--creative-lily-637110.netlify.app/).
+
 ## Despliegue Local
 
 Para desplegar esta aplicación en tu PC después de descargar el código, sigue estos pasos:
