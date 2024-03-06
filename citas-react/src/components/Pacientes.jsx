@@ -3,7 +3,7 @@ import React from 'react'
 const Pacientes = ({pacientes,setPaciente,eliminarPaciente}) => {
 
   //le aplicamos destructuring a pacientes
-  const{nombre,propietario,email,alta,sintomas,id}=pacientes
+  const{nombre,propietario,email,alta,servicios,id}=pacientes
 
     const handleEliminar = () => {
       console.log("eliminando....")
@@ -35,14 +35,14 @@ const Pacientes = ({pacientes,setPaciente,eliminarPaciente}) => {
     <span className='font-normal normal-case ' >{alta}</span>
     </p>
 
-    <p className='font-bold  mb-3 text-gray-700 uppercase'>Sintomas:{' '}
-    <span className='font-normal normal-case ' >{sintomas}</span>
+    <p className='font-bold  mb-3 text-gray-700 uppercase'>Servicios Prestados:{' '}
+    <span className='font-normal normal-case ' >{servicios}</span>
     </p>
     <div 
     className='flex  justify-between'
     >
       <button type='button'
-      className='py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-xl'
+      className='py-2 px-10 bg-cyan-600 hover:bg-cyan-700 text-white font-bold uppercase rounded-xl'
       
       onClick={()=>setPaciente(pacientes)}
       >Editar</button>
